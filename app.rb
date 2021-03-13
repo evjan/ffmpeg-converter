@@ -14,7 +14,7 @@ all_files.each do |f|
   dirname = f.split('/')[0...-1].join("/")
   puts "DIRNAME: #{dirname}"
   FileUtils.mkdir_p("converted/#{dirname}")
-  `ffmpeg -i "raw/#{f}" -vf "scale=1280:720,fps=30000/1001,format=yuv422p" -b:v 110M -c:a pcm_s16le -c:v dnxhd "converted/#{f}.mov"`
+  `ffmpeg -i "raw/#{f}" -vf "scale=1920:1080p,fps=50,format=yuv422p10" -b:v 440M -c:a pcm_s16be -c:v dnxhd "converted/#{f}.mov"`
 end
 
 puts 'done'
