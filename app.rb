@@ -26,5 +26,5 @@ all_files.each do |f|
   dirname = f.split('/')[0...-1].join("/")
   puts "DIRNAME: #{dirname}"
   FileUtils.mkdir_p("#{output_dir}/#{dirname}")
-  `ffmpeg -i "#{f}" -c:v prores_ks -profile:v #{profile} -vendor apl0 -pix_fmt yuv422p10le "#{output_dir}/#{f}.mov"`
+  `ffmpeg -i "#{f}" -c:v prores_ks -profile:v #{profile} -vendor apl0 -pix_fmt yuv422p10le -c:a pcm_s16be "#{output_dir}/#{f}.mov"`
 end
